@@ -1,7 +1,7 @@
 const session = require("express-session");
 const User = require("./../models/User");
 
-exports.createUser = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   try {
     const user = new User(req.body);
     await user.save();

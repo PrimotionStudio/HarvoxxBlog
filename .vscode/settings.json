@@ -1,0 +1,30 @@
+{
+    "workbench.colorTheme": "2077",
+    "tabnine.experimentalAutoImports": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.confirmDelete": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none",
+    "window.zoomLevel": -1,
+    "editor.fontLigatures": true,
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontLigatures"
+    ]
+}
