@@ -1,17 +1,32 @@
 const mongoose=requuire("mongoose");
 
-const Post=mongoose.Schema({
+const PostSchema=mongoose.Schema({
     author:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    title:{
         type: String,
         required: true,
     },
-    title:{
-
+    body:{
+        type: String,
+        required: true,
+    },
+    tags:{
+        type:[String],
+        required:true,
     }
-})
+});
+
+PostSchema.methods.moreByAuthor=async function(){
+    return await PostSchema.find({author: this.author._id});
+}
+
+module.exports= mongoose.model("Post", PostSchema);
 
 /*
-Post:
+PostSchema:
 author{
     name,
     photo,
