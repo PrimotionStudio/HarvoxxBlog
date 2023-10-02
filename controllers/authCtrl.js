@@ -1,22 +1,23 @@
+const session = require("express-session");
 const User = require("./../models/User");
 
-exports.createUser = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   try {
     const user = new User(req.body);
     await user.save();
-    res.status(201).json({
+    return res.status(201).json({
       status: "success",
       result: user,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       status: "error",
       result: error.stack,
     });
   }
 };
 
-exports.signIn = async (req, req, next) => {
+exports.signIn = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -32,14 +33,40 @@ exports.signIn = async (req, req, next) => {
         result: "Invalid email or password",
       });
     }
-    res.status(200).json({
+    session.user = user;
+    return res.status(200).json({
       status: "success",
       result: user,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       status: "error",
       result: error.stack,
     });
   }
+};
+
+exports.isLoggedIn = async (req, res, next) => {
+  if (!session.user) {
+    return res.status(401).json({
+      status: "error",
+      result: "You are not logged in",
+    });
+  }
+  const user = await User.findOne({ email: session.user.email });
+  if (!user) {
+    return res.status(401).json({
+      status: "error",
+      result: "You are not logged in",
+    });
+  }
+  return next();
+};
+
+exports.signOut = (req, res, next) => {
+  session.user = undefined;
+  return res.status(200).json({
+    status: "success",
+    result: "You have logged out",
+  });
 };
