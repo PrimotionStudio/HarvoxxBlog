@@ -43,14 +43,14 @@ exports.createPost = async (req,res,next) =>{
   })
 }
 
-exports.deletePostByTitle=async (req,res, next) =>{
+exports.deletePost=async (req,res, next) =>{
   let author=req.params.id;
-  let title=req.body.title
-  let post=await Post.findOne({title: title});
-  if(post.author.id==author.id){
+  let id=req.body.id
+  let post=await Post.findOne({_id: id});
+  if(post.author._id==author){
     Post.deleteOne({_id:post.id})
     .then(()=>{
-      console.log(`Deleted post with following title: ${title}`);
+      console.log(`Deleted post with following id: ${id}`);
       msg="Deleted";
     })
   }
