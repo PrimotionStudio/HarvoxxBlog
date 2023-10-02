@@ -60,3 +60,26 @@ exports.deletePost=async (req,res, next) =>{
   })
 }
 
+exports.editPost=async (req,res,next) =>{
+  let author=req.params.id;
+  let id=req.body.id
+  let post=await Post.findOne({_id: id});
+  let body=req.body.body==undefined? post.body:req.body.body
+  let title=req.body.title==undefined? post.title:req.body.title
+  if(post.author._id==author){
+    post.title=title;
+    post.body=body;
+    post.save()
+    .then(()=>{
+    console.log(`Edited post with following id: ${id}`);
+      msg="Edited";
+    })
+  }
+   return res.status(200).json({
+    status: "success",
+    result:msg,
+  })
+}
+
+
+
