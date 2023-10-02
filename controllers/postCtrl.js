@@ -60,11 +60,3 @@ exports.deletePost=async (req,res, next) =>{
   })
 }
 
-/*
-  createPost:
-  get title, body, tags (from body)
-  get author id(from params)
-  create post
-  save post
-  send positive response
-*/
