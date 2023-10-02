@@ -53,7 +53,7 @@ exports.isLoggedIn = async (req, res, next) => {
       result: "You are not logged in",
     });
   }
-  const user = await User.findOne({ email: session.email });
+  const user = await User.findOne({ email: session.user.email });
   if (!user) {
     return res.status(401).json({
       status: "error",
@@ -61,4 +61,12 @@ exports.isLoggedIn = async (req, res, next) => {
     });
   }
   return next();
+};
+
+exports.signOut = (req, res, next) => {
+  session.user = undefined;
+  return res.status(200).json({
+    status: "success",
+    result: "You have logged out",
+  });
 };
