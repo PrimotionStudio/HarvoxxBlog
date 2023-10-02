@@ -2,6 +2,7 @@ require("dotenv").config({ path: "./config.env" });
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const routes = require("./routes");
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(morgan("dev"));
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use("/", routes);
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hblog")
   .then(() => {
