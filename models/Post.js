@@ -18,15 +18,33 @@ const PostSchema = mongoose.Schema(
       type: [String],
       required: true,
     },
+    likes:{
+      type: Number,
+      required: false
+    },
+    dislikes:{
+      type: Number,
+      required: false
+    },
   },
   {
     timestamps: true,
   }
 );
 
-PostSchema.methods.moreByAuthor = async function () {
-  return await PostSchema.find({ author: this.author._id });
-};
+PostSchema.methods.like=async function(){
+  this.likes+=1;
+  console.log(`${this.title} got a like.`)
+  this.save();
+  
+}
+
+PostSchema.methods.dislike=async function(){
+  this.dislikes+=1;
+  console.log(`${this.title} got a like.`)
+  this.save();
+  
+}
 
 module.exports = mongoose.model("Post", PostSchema);
 

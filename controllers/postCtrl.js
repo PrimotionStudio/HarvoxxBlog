@@ -18,6 +18,22 @@ exports.getPost = async (req, res, next) => {
   });
 };
 
+exports.getPostsByAuthor = async (req, res, next) => {
+  const post = await Post.find({author: req.body.author});
+  return res.status(200).json({
+    status: "success",
+    result: post,
+  });
+};
+
+exports.get = async (req, res, next) => {
+  const post = await Post.find({author: req.body.author});
+  return res.status(200).json({
+    status: "success",
+    result: post,
+  });
+};
+
 exports.createPost = async (req,res,next) =>{
   let post=new Post({
     body:req.body.body,
@@ -81,5 +97,33 @@ exports.editPost=async (req,res,next) =>{
   })
 }
 
+exports.likePost=async (req,res,next) =>{
+  let postid=req.body.post;
+  let post=await Post.findById(postid);
+  post.like()
+  .then(()=>{
+    msg="liked";
+  });
+}
+
+exports.dislikePost=async (req,res,next) =>{
+  let postid=req.body.post;
+  let post=await Post.findById(postid);
+  post.dislike()
+  .then(()=>{
+    msg="disliked";
+  });
+}
 
 
+
+/*
+  function of posts:
+  add post
+  edit post
+  delete post
+  find post
+  find posts
+  find posts by author
+  like post
+*/
