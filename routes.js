@@ -6,8 +6,16 @@ const userCtrl = require("./controllers/userCtrl");
 const postCtrl = require("./controllers/postCtrl");
 
 // Auth
-Router.route("/signup").post(authCtrl.signUp);
-Router.route("/signin").post(authCtrl.signIn);
+Router.route("/signup")
+  .get((req, res, next) => {
+    res.status(200).render("signup");
+  })
+  .post(authCtrl.signUp);
+Router.route("/signin")
+  .get((req, res, next) => {
+    res.status(200).render("signin");
+  })
+  .post(authCtrl.signIn);
 Router.route("/signout").post(authCtrl.isLoggedIn, authCtrl.signOut);
 
 // Profile
