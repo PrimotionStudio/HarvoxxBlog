@@ -1,9 +1,21 @@
 const express = require("express");
 const Router = express.Router();
-
+const postCtrl = require("./controllers/postCtrl");
 const authCtrl = require("./controllers/authCtrl");
 const userCtrl = require("./controllers/userCtrl");
-const postCtrl = require("./controllers/postCtrl");
+
+const multer = require("multer");
+const multerupload=multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cd) => {
+      cd(null, "public/profiles");
+    },
+    filename: (req, file, cb) => {
+      
+      cb(null, `${req.userid}at${Date.now()}.jpg`)
+    }
+  })
+});
 
 // Auth
 Router.route("/signup")
@@ -21,6 +33,8 @@ Router.route("/signout").post(authCtrl.isLoggedIn, authCtrl.signOut);
 // Profile
 Router.route("/profile").get(authCtrl.isLoggedIn, userCtrl.getMe);
 
+// Update Profile Pic
+Router.post("/profilepic", multerupload.single("photo"), userCtrl.uploadProfilePic)
 // Post
 Router.route("/post")
   .post(authCtrl.isLoggedIn)
