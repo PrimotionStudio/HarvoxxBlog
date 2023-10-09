@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harv Blog</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+  </head>
+
+  <body>
+    <nav class="section-p1 section-m1">
+      <div class="logo">
+        <img src="./Assets/Logo.svg" alt="" />
+      </div>
+      <div class="list">
+        <li><a href="./home">Home</a></li>
+        <li><a href="./profile">Profile</a></li>
+        <li><a href="./publish" class="active">Publish</a></li>
+        <li><a href="./signout">Logout</a></li>
+        <li id="times"><i class="far fa-times times"></i></li>
+      </div>
+      <div class="hamburger">
+        <i class="fas fa-outdent"></i>
+      </div>
+    </nav>
+
+    <section class="second section-p1">
+      <div class="container">
+        <form action="/post" id="publish" method="post">
+          <input type="text" name="title" placeholder="Enter Title" required />
+          <textarea
+            name="body"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter Body"
+            required
+          ></textarea>
+          <input type="text" name="tags" placeholder="Enter Tags" />
+          <button type="submit" class="active">Submit</button>
+        </form>
+      </div>
+    </section>
+    <footer class="section-p1">
+      <div class="logo">
+        <img src="./Assets/Logo.svg" width="100%" alt="" />
+      </div>
+      <div class="copy">
+        <p>Unifeed &copy; 2023 All Copyrights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

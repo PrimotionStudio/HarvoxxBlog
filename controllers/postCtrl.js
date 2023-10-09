@@ -24,25 +24,24 @@ exports.get = async (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
   let post = new Post({
-    body: req.body.body,
     title: req.body.title,
+    body: req.body.body,
     tags: req.body.tags,
     author: session.user._id,
   });
 
-  post.save().then((err, doc) => {
-    if (err) {
-      console.log("Error occured: " + err);
-      msg = "Error occured: " + err;
-    } else {
-      msg = "posted";
-    }
-  });
-
-  return res.status(200).json({
-    status: "success",
-    result: msg,
-  });
+  post
+    .save()
+    .then(() => {
+      session.alert = "Post Published";
+      return res.status(201).redirect("/");
+    })
+    .catch((error) => {
+      console.log(error.stack);
+      return res
+        .status(500)
+        .render("error", { error: "An error occured while signing up" });
+    });
 };
 
 exports.deletePost = async (req, res, next) => {

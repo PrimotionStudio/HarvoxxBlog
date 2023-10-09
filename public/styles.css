@@ -1,346 +1,364 @@
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Spartan', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
 }
-
 /* Custom Section Margin and Padding */
 .section-p1 {
-    width: 80%;
-    margin: auto;
-    align-items: center;
+  width: 80%;
+  margin: auto;
+  align-items: center;
 }
-
 .section-m1 {
-    margin-bottom: 60px;
-    margin-top: 20px;
+  margin-bottom: 60px;
+  margin-top: 20px;
 }
 
 /* Nav Bar */
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.hamburger, .times{
-    display: none;
+.hamburger,
+.times {
+  display: none;
 }
 
 .list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 li {
-    list-style: none;
-    margin-left: 40px;
+  list-style: none;
+  margin-left: 40px;
 }
 
-.list i{
-    color: #797878;
-    cursor: pointer;
-    font-size: 25px;
+.list i {
+  color: #797878;
+  cursor: pointer;
+  font-size: 25px;
 }
 
-.hamburger i{
-    color: black;
-    font-size: 18px;
+.hamburger i {
+  color: black;
+  font-size: 18px;
 }
 
 li a {
-    text-decoration: none;
-    color: #797878;
-    font-weight: 400;
-    transition: 0.5s ease;
+  text-decoration: none;
+  color: #797878;
+  font-weight: 400;
+  transition: 0.5s ease;
 }
 
 li a:hover {
-    color: #EE7C0D;
-    font-weight: 500;
+  color: #ee7c0d;
+  font-weight: 500;
 }
 
-#times{
-    display: none;
+#times {
+  display: none;
 }
 
 .active {
-    background-color: #EE7C0D;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-weight: 700;
-    padding: 14px;
-    color: black;
+  background-color: #ee7c0d;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: 700;
+  padding: 14px;
+  color: black;
 }
 
 .active:hover {
-    color: black;
-    background-color: #fff;
+  color: black;
+  background-color: #ffac5b;
 }
 
 /* First Blog Post */
 .card {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-.first{
-    margin-bottom: 4rem;
+.first {
+  margin-bottom: 4rem;
 }
 
-img{
-    margin: 0;
-    padding: 0;
+img {
+  margin: 0;
+  padding: 0;
 }
 
 .profile-image {
-    width: 40%;
+  width: 40%;
 }
 
-.profile-image img{
-    height: 30vh;
+.profile-image img {
+  height: 30vh;
 }
 
 .writeup {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
 }
 
 .writeup h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
 .writeup p {
-    color: #797878;
-    font-size: 16px;
-    margin-bottom: 20px;
+  color: #797878;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-
 .profile-infot {
-    margin-left: 20px;
-    position: relative;
-    top: 10px;
+  margin-left: 20px;
+  position: relative;
+  top: 10px;
 }
 
 .profile-img {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .profile-img h3 {
-    font-size: 14px;
-    font-weight: 800;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .profile-img p {
-    font-size: 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.container{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-bottom: 90px;
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 90px;
 }
 
-.blog{
-    margin-right: 30px;
-    cursor: pointer;
+.blog {
+  margin-right: 30px;
+  cursor: pointer;
 }
-.blog-post h2{
-    font-size: 24px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.blog-post h2 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.blog-post p{
-    font-size: 15px;
-    color: #797878;
-    margin-bottom: 10px;
+.blog-post p {
+  font-size: 15px;
+  color: #797878;
+  margin-bottom: 10px;
 }
 
 .profile-info {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
-.profile-info h3{
-    font-size: 16px;
-    font-weight: 700;
+.profile-info h3 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.profile-info p{
-    font-size: 14px;
-    color: #797878;
-    font-weight: 500;
+.profile-info p {
+  font-size: 14px;
+  color: #797878;
+  font-weight: 500;
 }
 /* Footer */
-footer{
-    display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-    margin-bottom: 40px;
+footer {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-bottom: 40px;
 }
 
-.copy p{
-    font-size: 13px;
+.copy p {
+  font-size: 13px;
 }
 
 @media (max-width: 500px) {
-    .section-p1{
-        width: 90%;
-    }
-    .section-m1{
-        margin-bottom: 20px;
-    }
-    nav{
-        position: static;
-    }
-    .list{
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        justify-content: center;
-        right: -100%;
-        height: 100vh;
-        width: 100%;
-        background-color: #fff;
-        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-        z-index: 1;
-        transition: 0.5s ease;
-    }
-    .list li{
-        margin-bottom: 50px;
-    }
-    .hamburger{
-        display: block;
-    }
-    #times{
-        display: block;
-        position: absolute;
-        top: 50px;
-        left: 0;
-    }
-    .card{
-        flex-direction: column;
-    }
-    .profile-image{
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .writeup{
-        width: 100%;
-    }
-    .writeup h2{
-        font-size: 23px;
-        margin-bottom: 15px;
-    }
-    .writeup p{
-        margin-bottom: 15px;
-    }
-    .profile-img{
-        margin-bottom: 20px;
-    }
-    .profile-infot {
-        top: 5px;
-    }
+  .section-p1 {
+    width: 90%;
+  }
+  .section-m1 {
+    margin-bottom: 20px;
+  }
+  nav {
+    position: static;
+  }
+  .list {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    justify-content: center;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    transition: 0.5s ease;
+  }
+  .list li {
+    margin-bottom: 50px;
+  }
+  .hamburger {
+    display: block;
+  }
+  #times {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+  .card {
+    flex-direction: column;
+  }
+  .profile-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .writeup {
+    width: 100%;
+  }
+  .writeup h2 {
+    font-size: 23px;
+    margin-bottom: 15px;
+  }
+  .writeup p {
+    margin-bottom: 15px;
+  }
+  .profile-img {
+    margin-bottom: 20px;
+  }
+  .profile-infot {
+    top: 5px;
+  }
 
-    .container{
-        flex-direction: column;
-        margin-bottom: 0;
-    }
-    .blog{
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .blog h2{
-        margin-bottom: 1rem;
-    }
-    footer{
-        flex-direction: column;
-    }
-    .copy p{
-        font-size: 16px;
-        margin-bottom: 40px;
-    }
-    footer .logo{
-        position: relative;
-        right: 35%;
-    }
+  .container {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .blog {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .blog h2 {
+    margin-bottom: 1rem;
+  }
+  footer {
+    flex-direction: column;
+  }
+  .copy p {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+  footer .logo {
+    position: relative;
+    right: 35%;
+  }
 }
 @media (min-width: 500px) and (max-width: 900px) {
-    .section-p1{
-        width: 90%;
-    }
-    .section-m1{
-        margin-bottom: 20px;
-    }
-    li {
-        list-style: none;
-        margin-left: 15px;
-    }
-    .active {
-        font-weight: 600;
-        padding: 12px;
-    }
-    .card{
-        flex-direction: column;
-    }
-    .profile-image{
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .profile-image img{
-        height: 40vh;
-    }
-    .profile-img img{
-        width: 8%;
-    }
-    .writeup{
-        width: 100%;
-    }
-    .writeup h2{
-        font-size: 23px;
-        margin-bottom: 15px;
-    }
-    .writeup p{
-        margin-bottom: 15px;
-    }
-    .profile-img{
-        margin-bottom: 20px;
-    }
-    .blog-post img{
-        height: 40vh;
-    }
-    .profile-infot {
-        top: 5px;
-    }
-    .container{
-        flex-direction: column;
-        margin-bottom: 0;
-    }
-    .blog{
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .blog h2{
-        margin-bottom: 1rem;
-    }
-    .copy p{
-        font-size: 16px;
-    }
-    footer{
-        align-items: center;
-    }
+  .section-p1 {
+    width: 90%;
+  }
+  .section-m1 {
+    margin-bottom: 20px;
+  }
+  li {
+    list-style: none;
+    margin-left: 15px;
+  }
+  .active {
+    font-weight: 600;
+    padding: 12px;
+  }
+  .card {
+    flex-direction: column;
+  }
+  .profile-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .profile-image img {
+    height: 40vh;
+  }
+  .profile-img img {
+    width: 8%;
+  }
+  .writeup {
+    width: 100%;
+  }
+  .writeup h2 {
+    font-size: 23px;
+    margin-bottom: 15px;
+  }
+  .writeup p {
+    margin-bottom: 15px;
+  }
+  .profile-img {
+    margin-bottom: 20px;
+  }
+  .blog-post img {
+    height: 40vh;
+  }
+  .profile-infot {
+    top: 5px;
+  }
+  .container {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .blog {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .blog h2 {
+    margin-bottom: 1rem;
+  }
+  .copy p {
+    font-size: 16px;
+  }
+  footer {
+    align-items: center;
+  }
+}
+form#publish {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+form#publish button {
+  border: 0;
+}
+form#publish button:hover {
+  background-color: #ffac5b;
+}
+form#publish input,
+form#publish textarea {
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 1rem;
 }

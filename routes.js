@@ -59,6 +59,9 @@ Router.post(
   userCtrl.uploadProfilePic
 );
 // Post
+Router.route("/publish").get(authCtrl.isLoggedIn, (req, res, next) => {
+  res.status(200).render("publish");
+});
 Router.route("/post")
   .post(authCtrl.isLoggedIn, postCtrl.createPost)
   .get(authCtrl.isLoggedIn, postCtrl.getPosts);
