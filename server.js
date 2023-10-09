@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/", routes);
 mongoose
+  // .connect(process.env.MONGODB_URI)
   .connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hblog")
   .then(() => {
     console.log("MongoDB Connected");

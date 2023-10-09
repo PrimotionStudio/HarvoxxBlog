@@ -3,14 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SignIn</title>
-    <link rel="stylesheet" href="login.css" />
+    <title>SignUp</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+  <script>
+    <% if (alert != "") { %>
+      alert("<%= alert %>");
+    <% } %>
+  </script>
   <body>
-    <form action="signin" method="post">
-      <input type="email" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
-      <button type="submit">SignIn</button>
-    </form>
+    <div class="form">
+      <form action="signin" method="post">
+        <h1 class="log">Log In</h1>
+        <input
+          type="email"
+          class="log1"
+          name="email"
+          placeholder="Enter your Email"
+        /><br />
+        <input
+          type="password"
+          class="log1"
+          name="password"
+          placeholder="Enter Your Password"
+        /><br />
+        <button type="submit" class="log2">Log In</button>
+        <p>Don't have an account? <a href="./signup">Sign Up</a></p>
+      </form>
+    </div>
   </body>
 </html>
