@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile-page.css">
+    <title>User Profile</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Your Profile</h1>
+    </header>
+    <div class="profile-container">
+        <input type="file" id="file-input">
+        <label for="file-input">
+            <img src="profile-pic.png" alt="Profile Picture" class="profile-picture">
+            <p class="btn-upload">Upload Profile Picture</p>
+        </label>
+        <h2 class="user-name"></h2>
+        <!-- <button id="showFormButton">Edit Profile</button> -->
+        <form action="" id="myForm">
+            <input type="text" name="firstname" placeholder="Firstname" id="text"><br>
+            <input type="text" name="surname" placeholder="Surname" id="text"><br>
+            <input type="text" placeholder="Bio" name="bio" id="text"><br>
+            <input type="number" placeholder="age" min="13" max="99" id="text"><br>
+            <input type="text" placeholder="Email" id="text"><br>
+            <input type="text" name="" placeholder="Job title" id="text">
+        </form>
+
+        <a href="#" id="showFormButton">Edit Profile</a>
+    </div>
+    <script>
+        // Get references to the button and the form
+        const showFormButton = document.getElementById('showFormButton');
+        const myForm = document.getElementById('myForm');
+
+        // Add a click event listener to the button
+        showFormButton.addEventListener('click', function () {
+            // Toggle the form's display style
+            if (myForm.style.display === 'none' || myForm.style.display === '') {
+                myForm.style.display = 'block';
+            } else {
+                myForm.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

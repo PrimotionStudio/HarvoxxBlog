@@ -1,7 +1,7 @@
 const session = require("express-session");
 const User = require("./../models/User");
 
-exports.createUser = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   try {
     const user = new User(req.body);
     await user.save();
@@ -17,7 +17,7 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
-exports.signIn = async (req, req, next) => {
+exports.signIn = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -53,7 +53,7 @@ exports.isLoggedIn = async (req, res, next) => {
       result: "You are not logged in",
     });
   }
-  const user = await User.findOne({ email: session.email });
+  const user = await User.findOne({ email: session.user.email });
   if (!user) {
     return res.status(401).json({
       status: "error",
@@ -61,4 +61,12 @@ exports.isLoggedIn = async (req, res, next) => {
     });
   }
   return next();
+};
+
+exports.signOut = (req, res, next) => {
+  session.user = undefined;
+  return res.status(200).json({
+    status: "success",
+    result: "You have logged out",
+  });
 };
