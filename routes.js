@@ -12,7 +12,7 @@ const multerupload=multer({
     },
     filename: (req, file, cb) => {
       
-      cb(null, `${req.userid}at${Date.now()}.jpg`)
+      cb(null, `${req.userid} at ${Date.now()}.jpg`)
     }
   })
 });
@@ -23,11 +23,13 @@ Router.route("/signup")
     res.status(200).render("signup");
   })
   .post(authCtrl.signUp);
+
 Router.route("/signin")
   .get((req, res, next) => {
     res.status(200).render("signin");
   })
   .post(authCtrl.signIn);
+  
 Router.route("/signout").post(authCtrl.isLoggedIn, authCtrl.signOut);
 
 // Profile
