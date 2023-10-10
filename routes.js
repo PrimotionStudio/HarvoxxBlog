@@ -23,16 +23,40 @@ Router.route("/").get(async (req, res, next) => {
   if (session.user && (await User.findOne({ email: session.user.email }))) {
     return res.status(200).redirect("/home");
   }
-  res.status(200).render("index", { posts: postCtrl.getPosts(), login: false });
+  let alert;
+  if (session.alert) {
+    alert = session.alert;
+    session.alert = undefined;
+  }
+  console.log(await postCtrl.getPosts());
+  res.status(200).render("index", {
+    alert: alert || "",
+    posts: await postCtrl.getPosts(),
+    login: false,
+  });
 });
 Router.route("/home").get(authCtrl.isLoggedIn, (req, res, next) => {
-  res.status(200).render("index", { posts: postCtrl.getPosts(), login: true });
+  let alert;
+  if (session.alert) {
+    alert = session.alert;
+    session.alert = undefined;
+  }
+  res.status(200).render("index", {
+    alert: alert || "",
+    posts: postCtrl.getPosts(),
+    login: true,
+  });
 });
 
 // Auth
 Router.route("/signup")
   .get((req, res, next) => {
-    res.status(200).render("signup");
+    let alert;
+    if (session.alert) {
+      alert = session.alert;
+      session.alert = undefined;
+    }
+    res.status(200).render("signup", { alert: alert || "" });
   })
   .post(authCtrl.signUp);
 Router.route("/signin")
@@ -60,7 +84,12 @@ Router.post(
 );
 // Post
 Router.route("/publish").get(authCtrl.isLoggedIn, (req, res, next) => {
-  res.status(200).render("publish");
+  let alert;
+  if (session.alert) {
+    alert = session.alert;
+    session.alert = undefined;
+  }
+  res.status(200).render("publish", { alert: alert || "" });
 });
 Router.route("/post")
   .post(authCtrl.isLoggedIn, postCtrl.createPost)

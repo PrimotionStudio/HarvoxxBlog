@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
+  <script>
+    <% if (alert != "") { %>
+      alert("<%= alert %>");
+    <% } %>
+  </script>
   <body>
     <div class="form">
       <form action="signup" method="post">

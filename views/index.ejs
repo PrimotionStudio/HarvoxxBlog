@@ -11,6 +11,11 @@
     />
   </head>
 
+  <script>
+    <% if (alert != "") { %>
+      alert("<%= alert %>");
+    <% } %>
+  </script>
   <body>
     <nav class="section-p1 section-m1">
       <div class="logo">
@@ -66,7 +71,7 @@
 
     <section class="second section-p1">
       <div class="container">
-        <% if (posts.length> 0) { %> <% posts.forEach((post)=> { %>
+        <% let i; %> <% if (posts.length> 0) { %> <% posts.forEach((post)=> { %>
         <div class="blog">
           <div class="blog-post">
             <img src="./Assets/Article1.png" width="100%" alt="" />
@@ -81,7 +86,9 @@
             </div>
           </div>
         </div>
-        <% }); %> <% } %>
+        <% if (posts[i]._id == post._id) {%>
+        <br />
+        <% } %> <% i++; %> <% }); %> <% } %>
       </div>
     </section>
 

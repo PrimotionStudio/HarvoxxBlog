@@ -4,6 +4,7 @@ let msg = "";
 
 exports.getPosts = async () => {
   const posts = await Post.find();
+  // console.log(posts);
   return posts;
 };
 

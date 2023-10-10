@@ -28,6 +28,11 @@
       </div>
     </nav>
 
+    <script>
+      <% if (alert != "") { %>
+        alert("<%= alert %>");
+      <% } %>
+    </script>
     <section class="second section-p1">
       <div class="container">
         <form action="/post" id="publish" method="post">
