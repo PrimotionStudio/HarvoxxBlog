@@ -13,6 +13,14 @@ exports.getPost = async () => {
   return post;
 };
 
+exports.getPostsByTag = async (req, res, next) => {
+  const posts = await Post.find({tags: {$all:[req.body.tags]}})
+  return res.status(200).json({
+    status: "success",
+    result: posts,
+  });
+}
+
 exports.getPostsByAuthor = async (req, res, next) => {
   const post = await Post.find({ author: req.body.author });
   return post;
