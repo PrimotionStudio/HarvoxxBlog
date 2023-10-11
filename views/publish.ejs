@@ -45,7 +45,14 @@
             placeholder="Enter Body"
             required
           ></textarea>
-          <input type="text" name="tags" placeholder="Enter Tags" />
+          <div class="tag-container" id="tag-container">
+            <input
+              type="text"
+              id="tag-input"
+              placeholder="Enter tags and press space or comma"
+            />
+          </div>
+          <input type="hidden" name="tags" id="tags-input" />
           <button type="submit" class="active">Submit</button>
         </form>
       </div>

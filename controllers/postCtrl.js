@@ -4,7 +4,6 @@ let msg = "";
 
 exports.getPosts = async () => {
   const posts = await Post.find();
-  // console.log(posts);
   return posts;
 };
 
@@ -14,12 +13,12 @@ exports.getPost = async () => {
 };
 
 exports.getPostsByTag = async (req, res, next) => {
-  const posts = await Post.find({tags: {$all:[req.body.tags]}})
+  const posts = await Post.find({ tags: { $all: [req.body.tags] } });
   return res.status(200).json({
     status: "success",
     result: posts,
   });
-}
+};
 
 exports.getPostsByAuthor = async (req, res, next) => {
   const post = await Post.find({ author: req.body.author });
@@ -35,7 +34,7 @@ exports.createPost = async (req, res, next) => {
   let post = new Post({
     title: req.body.title,
     body: req.body.body,
-    tags: req.body.tags,
+    tags: req.body.tags.split(","),
     author: session.user._id,
   });
 

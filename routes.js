@@ -28,14 +28,14 @@ Router.route("/").get(async (req, res, next) => {
     alert = session.alert;
     session.alert = undefined;
   }
-  console.log(await postCtrl.getPosts());
+  // console.log(await postCtrl.getPosts());
   res.status(200).render("index", {
     alert: alert || "",
     posts: await postCtrl.getPosts(),
     login: false,
   });
 });
-Router.route("/home").get(authCtrl.isLoggedIn, (req, res, next) => {
+Router.route("/home").get(authCtrl.isLoggedIn, async (req, res, next) => {
   let alert;
   if (session.alert) {
     alert = session.alert;
@@ -43,7 +43,7 @@ Router.route("/home").get(authCtrl.isLoggedIn, (req, res, next) => {
   }
   res.status(200).render("index", {
     alert: alert || "",
-    posts: postCtrl.getPosts(),
+    posts: await postCtrl.getPosts(),
     login: true,
   });
 });

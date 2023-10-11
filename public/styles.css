@@ -357,8 +357,17 @@ form#publish input,
 form#publish textarea {
   padding: 1rem;
   width: 100%;
-  border: 1px solid;
+  border: 1px solid black;
   border-radius: 10px;
   font-size: 13px;
   margin-bottom: 1rem;
+}
+.tag {
+  display: inline-block;
+  background-color: #ffac5b;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
 }
