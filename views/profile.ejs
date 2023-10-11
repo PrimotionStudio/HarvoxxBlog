@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harv Blog</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+  </head>
+
+  <script>
+    <% if (alert != "") { %>
+      alert("<%= alert %>");
+    <% } %>
+  </script>
+  <body>
+    <nav class="section-p1 section-m1">
+      <div class="logo">
+        <img src="./Assets/Logo.svg" alt="" />
+      </div>
+      <div class="list">
+        <li><a href="./home">Home</a></li>
+        <li><a href="./profile">Profile</a></li>
+        <li><a href="./publish" class="active">Publish</a></li>
+        <li><a href="./signout">Logout</a></li>
+        <li id="times"><i class="far fa-times times"></i></li>
+      </div>
+      <div class="hamburger">
+        <i class="fas fa-outdent"></i>
+      </div>
+    </nav>
+
+    <section class="first section-p1">
+      <div class="card">
+        <div class="profile-img" style="margin: auto">
+          <img src="./Assets/User Avatar.png" width="30%" alt="" />
+          <div class="profile-info">
+            <h1><%= user.name %></h4>
+            <p><%= user.email %></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="section-p1">
+      <div class="logo">
+        <img src="./Assets/Logo.svg" width="100%" alt="" />
+      </div>
+      <div class="copy">
+        <p>Unifeed &copy; 2023 All Copyrights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

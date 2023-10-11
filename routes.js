@@ -47,7 +47,18 @@ Router.route("/home").get(authCtrl.isLoggedIn, async (req, res, next) => {
     login: true,
   });
 });
-
+Router.route("/profile").get(authCtrl.isLoggedIn, async (req, res, next) => {
+  let alert;
+  if (session.alert) {
+    alert = session.alert;
+    session.alert = undefined;
+  }
+  res.status(200).render("profile", {
+    alert: alert || "",
+    user: session.user,
+    login: this.true,
+  });
+});
 // Auth
 Router.route("/signup")
   .get((req, res, next) => {
