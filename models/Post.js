@@ -32,6 +32,8 @@ const PostSchema = mongoose.Schema(
   }
 );
 
+
+
 PostSchema.methods.like=async function(){
   this.likes+=1;
   console.log(`${this.title} got a like.`)

@@ -6,6 +6,11 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    skill: {
+      type:String,
+      required: false,
+      default: "A nobody",
+    },
     email: {
       type: String,
       required: true,

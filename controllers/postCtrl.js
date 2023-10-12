@@ -3,12 +3,12 @@ const session = require("express-session");
 let msg = "";
 
 exports.getPosts = async () => {
-  const posts = await Post.find();
+  const posts = await Post.find().populate("author").exec();
   return posts;
 };
 
 exports.getPost = async () => {
-  const post = await Post.findById(req.params.post_id);
+  const post = await Post.findById(req.params.post_id).populate("author").exec();
   return post;
 };
 

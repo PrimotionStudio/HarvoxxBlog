@@ -19,7 +19,7 @@ mongoose
     console.log("MongoDB Connected");
     try {
       app.listen(process.env.PORT || 9999);
-      console.log("Server Connected");
+      console.log("Server Connected \nRunning on at localhost:"+(process.env.PORT || 9999));
     } catch (error) {
       console.log("Error: ", error.stack);
     }
