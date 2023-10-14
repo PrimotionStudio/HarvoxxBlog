@@ -11,6 +11,21 @@ exports.getMe = async (req, res, next) => {
   
 };
 
-exports.uploadProfilePic = async (req, res, next) => {
-
+exports.updateProfile = async (req, res, next) => {
+  let {fullname, bio, email, skill} = req.body;
+  console.log(fullname, skill, bio, email)
+  let client = await user.findOneAndUpdate({_id:session.user.id},
+    {
+      name: fullname,
+      bio: bio,
+      email: email,
+      skill: skill,
+    })
+    .then( (doc)=>{
+      
+        console.log(doc.name+" profile update")
+        session.user=doc;
+        res.redirect("home");
+      
+    })
 }

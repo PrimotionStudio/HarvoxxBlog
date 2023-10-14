@@ -62,7 +62,8 @@ Router.route("/profile").get(authCtrl.isLoggedIn, async (req, res, next) => {
     user: session.user,
     login: (session.user != undefined),
   });
-});
+})
+.post(authCtrl.isLoggedIn, userCtrl.updateProfile);
 // Auth
 Router.route("/signup")
   .get((req, res, next) => {

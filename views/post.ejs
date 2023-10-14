@@ -108,10 +108,10 @@
                 <% if(posts.length == 0) {%>
                     <p>No more post</p>
                 <%} else {%>
-                <div class="blog">
+                <div class="minipost">
                     <% posts.forEach( (post) =>{ %>
                         <a class="nolink" href="/post/<%= post.id%>">        
-                            <div class="blog-post">
+                            <div class="minipost-post">
                               <img src="/Assets/Article1.png" width="100%" alt="" />
                               <h2><%= post.title %></h2>
                               <p><%= post.body %></p>

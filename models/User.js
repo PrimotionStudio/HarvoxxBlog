@@ -8,8 +8,12 @@ const UserSchema = mongoose.Schema(
     },
     skill: {
       type:String,
-      required: false,
-      default: "A nobody",
+      
+      default: "Unskilled",
+    },
+    bio: {
+      type: String,
+
     },
     email: {
       type: String,

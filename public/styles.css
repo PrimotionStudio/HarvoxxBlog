@@ -167,8 +167,7 @@ img {
 }
 
 .blog {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  
   gap:10%;
   margin-right: 30px;
   cursor: pointer;

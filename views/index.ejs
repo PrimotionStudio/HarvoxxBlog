@@ -53,7 +53,7 @@
             <h2><%= randomPost.title %></h2>
             <p><%= randomPost.body %></p>
             <div class="profile-img">
-              <img src="./Assets/User Avatar.png" width="10%" alt="" />
+              <img src="<%= randomPost.author.image %>" width="10%" alt="" />
               <div class="profile-infot">
                 <h3><%= randomPost.author.name %></h3>
                 <p><%= randomPost.author.skill %></p>
@@ -85,7 +85,7 @@
             <p><%= post.body %></p>
           </div>
           <div class="profile-img">
-            <img src="./Assets/Avatar-1.png" width="15%" alt="" />
+            <img src="<%= post.author.image || './profile-pic' %>" width="15%" alt="" />
             <div class="profile-info">
               <h3><%= post.author.name %></h3>
               <p><%= post.author.skill %></p>

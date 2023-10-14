@@ -40,18 +40,18 @@
     <div class="profile-container">
         <input type="file" accept="image/*" id="file-input" onchange="show(event)">
         <label for="file-input">
-            <img src="profile-pic.png" alt="Profile Picture" class="profile-picture">
+            <img src="<%= user.image || './profile-pic' %>" alt="Profile Picture" class="profile-picture">
             <button class="btn-upload" onclick="uploadPhoto()">Upload Profile Picture</button>
         </label>
         <h2 class="user-name"></h2>
         <!-- <button id="showFormButton">Edit Profile</button> -->
-        <form action="" id="myForm">
-            <input type="text" name="firstname" placeholder="Firstname" id="text"><br>
-            <input type="text" name="surname" placeholder="Surname" id="text"><br>
-            <input type="text" placeholder="Bio" name="bio" id="text"><br>
-            <input type="number" placeholder="age" min="13" max="99" id="text"><br>
-            <input type="text" placeholder="Email" id="text"><br>
-            <input type="text" name="" placeholder="Job title" id="text">
+
+        <form  action="/profile" method="post" id="myForm">
+            <input type="text" name="fullname" value="<%= user.name || '' %>" placeholder="Full Name" id="text"><br>
+            <input type="text" placeholder="Bio" value="<%= user.bio || '' %>" name="bio" id="text"><br>
+            <input type="text" placeholder="Email" value="<%= user.email || '' %>" id="text"><br>
+            <input type="text" name="skill" placeholder="Skill" value="<%= user.skill || '' %>" id="text">
+            <input type="submit" value="Submit" id="submit"/>
         </form>
 
         <a href="#" id="showFormButton">Edit Profile</a>
