@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/post.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/Assets/we tech.png" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <title>Blog section</title>
+</head>
+<body>
+    
+      <body>
+        <nav class="section-p1 section-m1">
+          <div class="logo">
+            <img src="/Assets/we tech.png" width="80" alt="" />
+          </div>
+          <div class="list">
+            <% if (login) {%>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/publish" class="active">Publish</a></li>
+            <li><a href="/signout">Logout</a></li>
+            <% } else { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/signin" class="active">Accounts</a></li>
+            <% } %>
+            <li id="times"><i class="far fa-times times"></i></li>
+          </div>
+          <div class="hamburger">
+            <i class="fas fa-outdent"></i>
+          </div>
+        </nav>
+    <section class="cont">
+        <div class="cont1">
+             <div class="rem">
+                <div class="rem1">
+                    <!-- <img src="data:<%= post.author.photo.contentType %>; base64, <%=post.author.photo.data.toString('base64') %>" alt=""> -->
+                    <img src="<%= post.author.image || '/Assets/asset10.jpg' %>" alt="poster"/>
+                </div>
+               
+                <div class="rem2">
+                    <h4> <%= post.author.name %></h4>
+                    <h3><%= post.author.skill %> </h3>
+                </div>
+            </div>
+            
+            
+           
+        </div>
+</section>
+
+    <div class="container">
+        <div class="row">
+            <div class="header">
+                <h1><%= post.title %></h1>
+                <p>
+                    <%= post.createdAt %>
+                </p>
+            </div>
+            <div class="content">
+                
+                <div class="cardr">
+                   
+                    <%= post.body %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <% if(!login){ %>
+    <section class="like">
+        <div class="likes1">
+            <button class="likes" onclick="window.location.href='/signin'">
+                <svg viewbox="0 0 1720 1720" height="50" width="50" xmlns="http://www.w3.org/2000/svg"><path d="M384 1344q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm1152-576q0-51-39-89.5t-89-38.5h-352q0-58 48-159.5t48-160.5q0-98-32-145t-128-47q-26 26-38 85t-30.5 125.5-59.5 109.5q-22 23-77 91-4 5-23 30t-31.5 41-34.5 42.5-40 44-38.5 35.5-40 27-35.5 9h-32v640h32q13 0 31.5 3t33 6.5 38 11 35 11.5 35.5 12.5 29 10.5q211 73 342 73h121q192 0 192-167 0-26-5-56 30-16 47.5-52.5t17.5-73.5-18-69q53-50 53-119 0-25-10-55.5t-25-47.5q32-1 53.5-47t21.5-81zm128-1q0 89-49 163 9 33 9 69 0 77-38 144 3 21 3 43 0 101-60 178 1 139-85 219.5t-227 80.5h-129q-96 0-189.5-22.5t-216.5-65.5q-116-40-138-40h-288q-53 0-90.5-37.5t-37.5-90.5v-640q0-53 37.5-90.5t90.5-37.5h274q36-24 137-155 58-75 107-128 24-25 35.5-85.5t30.5-126.5 62-108q39-37 90-37 84 0 151 32.5t102 101.5 35 186q0 93-48 192h176q104 0 180 76t76 179z"/></svg>
+                <p><%= post.likes || 0 %></p>
+            </button>
+            <div class="like2">
+                <button class="likes" onclick="window.location.href='/signin'">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="50" viewBox="0 0 24 24" width="50"><path d="M12.3951 18.2179L12.1659 20.5867C12.0737 21.5388 11.1854 22.1847 10.2872 21.9526C8.93568 21.6034 7.98754 20.3484 7.98754 18.9086L7.98754 15.8738C7.98754 15.1988 7.98754 14.8613 7.84097 14.6131C7.75806 14.4727 7.64394 14.3548 7.5081 14.2691C7.26797 14.1176 6.94141 14.1176 6.28828 14.1176H5.89197C4.18918 14.1176 3.33779 14.1176 2.81356 13.7271C2.42145 13.4351 2.14483 13.0063 2.03478 12.5199C1.88765 11.8696 2.21511 11.0574 2.87003 9.43293L3.19654 8.62306C3.38511 8.15533 3.46228 7.64765 3.42157 7.1427C3.18988 4.26937 5.46934 1.84756 8.25492 2.0075L18.6793 2.60602C19.8177 2.67138 20.3869 2.70406 20.9014 3.15924C21.4159 3.61442 21.5127 4.08306 21.7063 5.02034C21.8714 5.81926 22 6.79877 22 7.91121C22 9.14499 21.8418 10.2153 21.6512 11.057C21.3684 12.3055 20.1758 12.9769 18.9447 12.8178C15.6811 12.3962 12.7223 14.8357 12.3951 18.2179Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M17 12.5L17.137 12.0434C18.024 9.08677 17.9761 5.92838 17 3" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                <p><%= post.dislikes || 0 %></p>
+            </button>
+            </div>
+        </div>
+    </section>
+    <% } else { %>
+    <section class="like">
+        <div class="likes1">
+            <button class="likes" onclick='like(<%- `"${post.id}"` %>)'>
+                <svg viewbox="0 0 1720 1720" height="50" width="50" xmlns="http://www.w3.org/2000/svg"><path d="M384 1344q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm1152-576q0-51-39-89.5t-89-38.5h-352q0-58 48-159.5t48-160.5q0-98-32-145t-128-47q-26 26-38 85t-30.5 125.5-59.5 109.5q-22 23-77 91-4 5-23 30t-31.5 41-34.5 42.5-40 44-38.5 35.5-40 27-35.5 9h-32v640h32q13 0 31.5 3t33 6.5 38 11 35 11.5 35.5 12.5 29 10.5q211 73 342 73h121q192 0 192-167 0-26-5-56 30-16 47.5-52.5t17.5-73.5-18-69q53-50 53-119 0-25-10-55.5t-25-47.5q32-1 53.5-47t21.5-81zm128-1q0 89-49 163 9 33 9 69 0 77-38 144 3 21 3 43 0 101-60 178 1 139-85 219.5t-227 80.5h-129q-96 0-189.5-22.5t-216.5-65.5q-116-40-138-40h-288q-53 0-90.5-37.5t-37.5-90.5v-640q0-53 37.5-90.5t90.5-37.5h274q36-24 137-155 58-75 107-128 24-25 35.5-85.5t30.5-126.5 62-108q39-37 90-37 84 0 151 32.5t102 101.5 35 186q0 93-48 192h176q104 0 180 76t76 179z"/></svg>
+                <p><%= post.likes  %></p>
+            </button>
+            <div class="like2">
+                <button class="likes" onclick='dislike(<%- `"${post.id}"` %>)'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="50" viewBox="0 0 24 24" width="50"><path d="M12.3951 18.2179L12.1659 20.5867C12.0737 21.5388 11.1854 22.1847 10.2872 21.9526C8.93568 21.6034 7.98754 20.3484 7.98754 18.9086L7.98754 15.8738C7.98754 15.1988 7.98754 14.8613 7.84097 14.6131C7.75806 14.4727 7.64394 14.3548 7.5081 14.2691C7.26797 14.1176 6.94141 14.1176 6.28828 14.1176H5.89197C4.18918 14.1176 3.33779 14.1176 2.81356 13.7271C2.42145 13.4351 2.14483 13.0063 2.03478 12.5199C1.88765 11.8696 2.21511 11.0574 2.87003 9.43293L3.19654 8.62306C3.38511 8.15533 3.46228 7.64765 3.42157 7.1427C3.18988 4.26937 5.46934 1.84756 8.25492 2.0075L18.6793 2.60602C19.8177 2.67138 20.3869 2.70406 20.9014 3.15924C21.4159 3.61442 21.5127 4.08306 21.7063 5.02034C21.8714 5.81926 22 6.79877 22 7.91121C22 9.14499 21.8418 10.2153 21.6512 11.057C21.3684 12.3055 20.1758 12.9769 18.9447 12.8178C15.6811 12.3962 12.7223 14.8357 12.3951 18.2179Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M17 12.5L17.137 12.0434C18.024 9.08677 17.9761 5.92838 17 3" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                <p><%= post.dislikes  %></p>
+            </button>
+            </div>
+        </div>
+    </section>
+    <% } %>
+    <section class="post">
+        <div class="post1">
+            <div class="post2">
+                <h2>More from this author</h2>
+                <% if(posts.length == 0) {%>
+                    <p>No more post</p>
+                <%} else {%>
+                <div class="blog">
+                    <% posts.forEach( (post) =>{ %>
+                        <a class="nolink" href="/post/<%= post.id%>">        
+                            <div class="blog-post">
+                              <img src="/Assets/Article1.png" width="100%" alt="" />
+                              <h2><%= post.title %></h2>
+                              <p><%= post.body %></p>
+                            </div>
+                            </a>
+                    <% }) %>
+                <%} %>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    console.log("<%- post.author.image %>")
+    async function like(id){
+       await fetch("/like/<%- post.id %>")
+        .then(()=>{
+            
+            window.location.reload()
+        })
+    }
+    
+    async function dislike(id){
+      await fetch("/dislike/<%- post.id %>")
+        .then(()=>{
+            
+            window.location.reload()
+        })
+    }
+    
+</script>
+</body>
+
+</html>

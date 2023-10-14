@@ -5,7 +5,6 @@
         "**/.git": false
     },
     "security.workspace.trust.untrustedFiles": "open",
-    "files.autoSave": "onFocusChange",
     "editor.formatOnSave": true,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"

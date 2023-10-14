@@ -20,11 +20,13 @@ const PostSchema = mongoose.Schema(
     },
     likes:{
       type: Number,
-      required: false
+      required: false,
+      default: 0
     },
     dislikes:{
       type: Number,
-      required: false
+      required: false,
+      default: 0
     },
   },
   {
@@ -36,15 +38,19 @@ const PostSchema = mongoose.Schema(
 
 PostSchema.methods.like=async function(){
   this.likes+=1;
-  console.log(`${this.title} got a like.`)
-  this.save();
+  this.save()
+  .then(()=>{
+    console.log(`${this.title} got a like.`)
+  })
   
 }
 
 PostSchema.methods.dislike=async function(){
   this.dislikes+=1;
-  console.log(`${this.title} got a like.`)
-  this.save();
+  this.save()
+  .then(()=>{
+    console.log(`${this.title} got a like.`)
+  })
   
 }
 

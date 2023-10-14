@@ -11,10 +11,22 @@
   width: 80%;
   margin: auto;
   align-items: center;
+  
 }
 .section-m1 {
   margin-bottom: 60px;
   margin-top: 20px;
+}
+
+.logo img {
+  padding:0.5%;
+  
+}
+
+.nolink{
+  display: contents;
+  color:unset;
+  
 }
 
 /* Nav Bar */
@@ -87,6 +99,7 @@ li a:hover {
 .card {
   display: flex;
   position: relative;
+  flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
 }
@@ -154,6 +167,9 @@ img {
 }
 
 .blog {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10%;
   margin-right: 30px;
   cursor: pointer;
 }
@@ -259,6 +275,7 @@ footer {
     margin-bottom: 0;
   }
   .blog {
+    
     width: 100%;
     margin-bottom: 20px;
   }

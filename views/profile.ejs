@@ -1,58 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harv Blog</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    />
-  </head>
 
-  <script>
-    <% if (alert != "") { %>
-      alert("<%= alert %>");
-    <% } %>
-  </script>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile-page.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/Assets/we tech.png" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <header>
     <nav class="section-p1 section-m1">
-      <div class="logo">
-        <img src="./Assets/Logo.svg" alt="" />
-      </div>
-      <div class="list">
-        <li><a href="./home">Home</a></li>
-        <li><a href="./profile">Profile</a></li>
-        <li><a href="./publish" class="active">Publish</a></li>
-        <li><a href="./signout">Logout</a></li>
-        <li id="times"><i class="far fa-times times"></i></li>
-      </div>
-      <div class="hamburger">
-        <i class="fas fa-outdent"></i>
-      </div>
-    </nav>
-
-    <section class="first section-p1">
-      <div class="card">
-        <div class="profile-img" style="margin: auto">
-          <img src="./Assets/User Avatar.png" width="30%" alt="" />
-          <div class="profile-info">
-            <h1><%= user.name %></h4>
-            <p><%= user.email %></p>
-          </div>
+        <div class="logo">
+          <img src="/Assets/we tech.png" width="80" alt="" />
         </div>
-      </div>
-    </section>
-    <footer class="section-p1">
-      <div class="logo">
-        <img src="./Assets/Logo.svg" width="100%" alt="" />
-      </div>
-      <div class="copy">
-        <p>Unifeed &copy; 2023 All Copyrights Reserved</p>
-      </div>
-    </footer>
+        <h1>Welcome to Your Profile </h1>
+        <div class="list">
+          <% if (login) {%>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/publish" class="active">Publish</a></li>
+          <li><a href="/signout">Logout</a></li>
+          <% } else { %>
+          <li><a href="/">Home</a></li>
+          <li><a href="/signin" class="active">Accounts</a></li>
+          <% } %>
+          <li id="times"><i class="far fa-times times"></i></li>
+        </div>
+        <div class="hamburger">
+          <i class="fas fa-outdent"></i>
+        </div>
+      </nav>
+    
+        
+    </header>
+    <div class="profile-container">
+        <input type="file" accept="image/*" id="file-input" onchange="show(event)">
+        <label for="file-input">
+            <img src="profile-pic.png" alt="Profile Picture" class="profile-picture">
+            <button class="btn-upload" onclick="uploadPhoto()">Upload Profile Picture</button>
+        </label>
+        <h2 class="user-name"></h2>
+        <!-- <button id="showFormButton">Edit Profile</button> -->
+        <form action="" id="myForm">
+            <input type="text" name="firstname" placeholder="Firstname" id="text"><br>
+            <input type="text" name="surname" placeholder="Surname" id="text"><br>
+            <input type="text" placeholder="Bio" name="bio" id="text"><br>
+            <input type="number" placeholder="age" min="13" max="99" id="text"><br>
+            <input type="text" placeholder="Email" id="text"><br>
+            <input type="text" name="" placeholder="Job title" id="text">
+        </form>
 
-    <script src="script.js"></script>
-  </body>
+        <a href="#" id="showFormButton">Edit Profile</a>
+    </div>
+    <script>
+        // Get references to the button and the form
+        const showFormButton = document.getElementById('showFormButton');
+        const myForm = document.getElementById('myForm');
+
+        // Add a click event listener to the button
+        showFormButton.addEventListener('click', function () {
+            // Toggle the form's display style
+            if (myForm.style.display === 'none' || myForm.style.display === '') {
+                myForm.style.display = 'block';
+            } else {
+                myForm.style.display = 'none';
+            }
+        });
+
+        var input = document.querySelector("#file-input")
+        var pic = document.querySelector(".profile-picture")
+        function show(event){
+            
+            let reader=new FileReader()
+
+            reader.onload = function(e){
+                pic.src=e.target.result;
+            }
+            reader.readAsDataURL(event.target.files[0])
+        }
+
+        function uploadPhoto(){
+            const sel = input.files[0]
+           
+            if(sel){
+                let data = new FormData()
+                data.append("photo", sel)
+               
+                 fetch("/profilepic",{
+                     method: "POST",
+                     body: data,
+                 })
+            .then((resp)=>{ return resp.json()})
+            .then((json)=>{
+                if(json.status=="success"){
+                    alert("Photo upload successful")
+                }
+            })
+            }
+           
+            event.preventDefault()
+        }
+    </script>
+</body>
+
 </html>

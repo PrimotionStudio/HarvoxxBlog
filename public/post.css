@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
     margin: 0;
     padding: 0;
@@ -30,20 +30,20 @@ display: flex;
 justify-content: space-around;
 margin-top: 2rem;
 }
-.card{
+.cardr{
     width: 100%;
 
 }
-.card img{
+.cardr img{
     width: 100%;
     height: 65vh;
 }
-.card h4{
+.cardr h4{
     margin: 10px 0 0 10px;
     font-size: 15px;
     font-family: roboto,sans-serif;
 }
-.card p{
+.cardr p{
     font-size: 15px;
     color: #6e6e6e;
     line-height: 1.5;
@@ -60,7 +60,7 @@ margin-top: 2rem;
     font-family: roboto,sans-serif;
     font-weight: bold;
 }
-.cont2 h3{
+.rem h3{
     font-size: 20px;
     margin-top: 2rem;
     font-family: roboto,sans-serif;
@@ -70,7 +70,9 @@ margin-top: 2rem;
 .rem{
  display: flex;
  justify-content: space-between;
- width: 40%;
+ flex-direction: row;
+ width: 60%;
+ gap:10% 10%;
  margin-top: 1rem;
  align-items: center;
 }
@@ -78,16 +80,23 @@ margin-top: 2rem;
     width: 20%;
 }
 .rem1 img{
-    width: 100%;
+    width: 150px;
     border-radius: 50%;
-}.rem2 a{
-    color: blue;
-    text-decoration: none;
+}.rem2 {
+    display: flex;
+    flex-direction: column;
+    gap:1%;
+    justify-content: start;
+    align-content: center;
 }
 .like{
     width: 45%;
     margin: auto;
 
+}
+.likes {
+    border:none;
+    
 }
 .likes1{
     display: flex;
@@ -113,12 +122,24 @@ margin-top: 2rem;
         margin: auto;
     }
     .rem{
-        width: 70%;
+        flex-direction: column;
+        justify-content: left;
+        width: 100%;
+        gap: 10%;
+        text-align: center;
+    }
+    .rem1 {
+        width: 50%;
+        justify-self: stretch;
+    }
+    .rem2{
+        gap: 5%;
+        align-content: space-around;
     }
     .container .row{
         width: 100%;
     }
-    .card img{
+    .cardr img{
         object-fit: cover;
     }
     .like{

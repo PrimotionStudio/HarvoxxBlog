@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harv Blog</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./Assets/we tech.png" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -19,7 +20,7 @@
   <body>
     <nav class="section-p1 section-m1">
       <div class="logo">
-        <img src="./Assets/Logo.svg" alt="" />
+        <img src="./Assets/we tech.png" width="80" alt="" />
       </div>
       <div class="list">
         <% if (login) {%>
@@ -43,23 +44,25 @@
     * posts.length); %> <% const randomPost=posts[randomIndex]; %>
 
     <section class="first section-p1">
+      <a class="nolink" href="/post/<%= randomPost.id%>">            
       <div class="card">
         <div class="profile-image">
-          <img src="./Assets/Main-Article.png" width="100%" alt="" />
-        </div>
-        <div class="writeup">
-          <h2><%= randomPost.title %></h2>
-          <p><%= randomPost.body %></p>
-          <div class="profile-img">
-            <img src="./Assets/User Avatar.png" width="10%" alt="" />
-            <div class="profile-infot">
-              <h3><%= randomPost.author.name %></h3>
-              <p><%= randomPost.author.skill %></p>
+            <img src="./Assets/Main-Article.png" width="100%" alt="" />
+          </div>
+          <div class="writeup">
+            <h2><%= randomPost.title %></h2>
+            <p><%= randomPost.body %></p>
+            <div class="profile-img">
+              <img src="./Assets/User Avatar.png" width="10%" alt="" />
+              <div class="profile-infot">
+                <h3><%= randomPost.author.name %></h3>
+                <p><%= randomPost.author.skill %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </a>
+      </section>
 
     <% } else { %>
     <section class="second section-p1">
@@ -75,6 +78,7 @@
       <div class="container">
         <%}%>
         <div class="blog">
+          <a class="nolink" href="/post/<%= post.id%>">        
           <div class="blog-post">
             <img src="./Assets/Article1.png" width="100%" alt="" />
             <h2><%= post.title %></h2>
@@ -87,6 +91,7 @@
               <p><%= post.author.skill %></p>
             </div>
           </div>
+          </a>
         </div>
         <% if (i % 3 == 0) {first = i + 1;%>
       </div>
@@ -99,7 +104,7 @@
 
     <footer class="section-p1">
       <div class="logo">
-        <img src="./Assets/Logo.svg" width="100%" alt="" />
+        <img src="./Assets/we tech.png" width="80" alt="" />
       </div>
       <div class="copy">
         <p>Unifeed &copy; 2023 All Copyrights Reserved</p>

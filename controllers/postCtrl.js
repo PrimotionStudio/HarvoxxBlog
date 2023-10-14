@@ -7,22 +7,24 @@ exports.getPosts = async () => {
   return posts;
 };
 
-exports.getPost = async () => {
-  const post = await Post.findById(req.params.post_id).populate("author").exec();
+exports.getPost = async (postid) => {
+  const post = await Post.findById(postid).populate("author").exec();
+  console.log("fetching post");
   return post;
+  
 };
 
-exports.getPostsByTag = async (req, res, next) => {
-  const posts = await Post.find({ tags: { $all: [req.body.tags] } });
+exports.getPostsByTag = async (req) => {
+  const posts = await Post.find({ tags: { $all: tags } }).populate("author").exec();
   return res.status(200).json({
     status: "success",
     result: posts,
   });
 };
 
-exports.getPostsByAuthor = async (req, res, next) => {
-  const post = await Post.find({ author: req.body.author });
-  return post;
+exports.getPostsByAuthor = async (id) => {
+  const posts = await Post.find({ author: id }).populate("author").exec();
+  return posts;
 };
 
 exports.get = async (req, res, next) => {
@@ -89,19 +91,23 @@ exports.editPost = async (req, res, next) => {
 };
 
 exports.likePost = async (req, res, next) => {
-  let postid = req.body.post;
+  let postid = req.params.post;
   let post = await Post.findById(postid);
-  post.like().then(() => {
+  post.like()
     msg = "liked";
-  });
+
+  console.log(msg)
+  next()
 };
 
 exports.dislikePost = async (req, res, next) => {
-  let postid = req.body.post;
+  let postid = req.params.post;
   let post = await Post.findById(postid);
-  post.dislike().then(() => {
+  post.dislike()
     msg = "disliked";
-  });
+
+  console.log(msg)
+  next()
 };
 
 /*
