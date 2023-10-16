@@ -60,7 +60,10 @@
             <div class="header">
                 <h1><%= post.title %></h1>
                 <p>
-                    <%= post.createdAt %>
+                    <% const parsedDate = new Date(post.createdAt); const options = {
+                    year: "numeric", month: "long", day: "numeric" }; const
+                    formattedDate = parsedDate.toLocaleDateString("en-US", options);
+                    %><%=formattedDate %>
                 </p>
             </div>
             <div class="content">

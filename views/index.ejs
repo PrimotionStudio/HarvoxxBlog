@@ -64,6 +64,14 @@
             <h2><%= post.title %></h2>
             <p><%= post.body %></p>
           </div>
+          <div>
+            <sub>
+              <% const parsedDate = new Date(post.createdAt); const options = {
+              year: "numeric", month: "long", day: "numeric" }; const
+              formattedDate = parsedDate.toLocaleDateString("en-US", options);
+              %><%=formattedDate %>
+            </sub>
+          </div>
         </a>
       </div>
       <% }); %> <% } %>
