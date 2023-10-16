@@ -58,8 +58,13 @@ PostSchema.methods.dislike=async function(){
 }
 
 PostSchema.virtual("image").get(function(){
-  let src= `data:${this.photo.contentType}; base64, ${this.photo.data.toString('base64')}`;
-  return src;
+  if(this.photo.data!=undefined){
+    let src= `data:${this.photo.contentType}; base64, ${this.photo.data.toString('base64')}`;
+    return src;
+  }
+  else{
+    return undefined;
+  }
 });
 
 module.exports = mongoose.model("Post", PostSchema);

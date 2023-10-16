@@ -118,5 +118,5 @@ exports.dislikePost = async (req, res, next) => {
   find post
   find posts
   find posts by author
-  like post
+  like/dislike post
 */

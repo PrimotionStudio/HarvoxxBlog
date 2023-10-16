@@ -47,7 +47,7 @@
       <a class="nolink" href="/post/<%= randomPost.id%>">            
       <div class="card">
         <div class="profile-image">
-            <img src="./Assets/Main-Article.png" width="100%" alt="" />
+            <img src="<%= randomPost.image||'./Assets/Main-Article.png' %>" width="100%" alt="" />
           </div>
           <div class="writeup">
             <h2><%= randomPost.title %></h2>
@@ -80,7 +80,7 @@
         <div class="blog">
           <a class="nolink" href="/post/<%= post.id%>">        
           <div class="blog-post">
-            <img src="./Assets/Article1.png" width="100%" alt="" />
+            <img src="<%= post.image||'./Assets/Article1.png'%>" width="100%" alt="" />
             <h2><%= post.title %></h2>
             <p><%= post.body %></p>
           </div>
