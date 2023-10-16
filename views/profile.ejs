@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/profile-page.css">
-    <link rel="stylesheet" href="/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/profile-page.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" href="/Assets/we tech.png" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
     <title>WeTech - User Profile</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-    <nav class="section-p1 section-m1">
+      <nav class="section-p1 section-m1">
         <div class="logo">
-          <img src="/Assets/we tech.png"   alt="" />
+          <a href="./">
+            <img src="./Assets/we tech.png" alt="" />
+          </a>
         </div>
-        <h1>Welcome to Your Profile </h1>
+        <h1>Welcome to Your Profile</h1>
         <div class="list">
           <% if (login) {%>
           <li><a href="/home">Home</a></li>
@@ -34,77 +38,109 @@
           <i class="fas fa-outdent"></i>
         </div>
       </nav>
-    
-        
     </header>
     <div class="profile-container">
-        <input type="file" accept="image/*" id="file-input" onchange="show(event)">
-        <label for="file-input">
-            <img src="<%= user.image || './profile-pic' %>" alt="Profile Picture" class="profile-picture">
-            <button class="btn-upload" onclick="uploadPhoto()">Upload Profile Picture</button>
-        </label>
-        <h2 class="user-name"></h2>
-        <!-- <button id="showFormButton">Edit Profile</button> -->
+      <input
+        type="file"
+        accept="image/*"
+        id="file-input"
+        onchange="show(event)"
+      />
+      <label for="file-input">
+        <img
+          src="<%= user.image || './profile-pic' %>"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+        <button class="btn-upload" onclick="uploadPhoto()">
+          Upload Profile Picture
+        </button>
+      </label>
+      <h2 class="user-name"></h2>
+      <!-- <button id="showFormButton">Edit Profile</button> -->
 
-        <form  action="/profile" method="post" id="myForm">
-            <input type="text" name="fullname" value="<%= user.name || '' %>" placeholder="Full Name" id="text"><br>
-            <input type="text" placeholder="Bio" value="<%= user.bio || '' %>" name="bio" id="text"><br>
-            <input type="text" placeholder="Email" value="<%= user.email || '' %>" id="text"><br>
-            <input type="text" name="skill" placeholder="Skill" value="<%= user.skill || '' %>" id="text">
-            <input type="submit" value="Submit" id="submit"/>
-        </form>
+      <form action="/profile" method="post" id="myForm">
+        <input
+          type="text"
+          name="fullname"
+          value="<%= user.name || '' %>"
+          placeholder="Full Name"
+          id="text"
+        /><br />
+        <input
+          type="text"
+          placeholder="Bio"
+          value="<%= user.bio || '' %>"
+          name="bio"
+          id="text"
+        /><br />
+        <input
+          type="text"
+          placeholder="Email"
+          value="<%= user.email || '' %>"
+          id="text"
+        /><br />
+        <input
+          type="text"
+          name="skill"
+          placeholder="Skill"
+          value="<%= user.skill || '' %>"
+          id="text"
+        />
+        <input type="submit" value="Submit" id="submit" />
+      </form>
 
-        <a href="#" id="showFormButton">Edit Profile</a>
+      <a href="#" id="showFormButton">Edit Profile</a>
     </div>
     <script>
-        // Get references to the button and the form
-        const showFormButton = document.getElementById('showFormButton');
-        const myForm = document.getElementById('myForm');
+      // Get references to the button and the form
+      const showFormButton = document.getElementById("showFormButton");
+      const myForm = document.getElementById("myForm");
 
-        // Add a click event listener to the button
-        showFormButton.addEventListener('click', function () {
-            // Toggle the form's display style
-            if (myForm.style.display === 'none' || myForm.style.display === '') {
-                myForm.style.display = 'block';
-            } else {
-                myForm.style.display = 'none';
-            }
-        });
-
-        var input = document.querySelector("#file-input")
-        var pic = document.querySelector(".profile-picture")
-        function show(event){
-            
-            let reader=new FileReader()
-
-            reader.onload = function(e){
-                pic.src=e.target.result;
-            }
-            reader.readAsDataURL(event.target.files[0])
+      // Add a click event listener to the button
+      showFormButton.addEventListener("click", function () {
+        // Toggle the form's display style
+        if (myForm.style.display === "none" || myForm.style.display === "") {
+          myForm.style.display = "block";
+        } else {
+          myForm.style.display = "none";
         }
+      });
 
-        function uploadPhoto(){
-            const sel = input.files[0]
-           
-            if(sel){
-                let data = new FormData()
-                data.append("photo", sel)
-               
-                 fetch("/profilepic",{
-                     method: "POST",
-                     body: data,
-                 })
-            .then((resp)=>{ return resp.json()})
-            .then((json)=>{
-                if(json.status=="success"){
-                    alert("Photo upload successful")
-                }
+      var input = document.querySelector("#file-input");
+      var pic = document.querySelector(".profile-picture");
+      function show(event) {
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+          pic.src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+
+      function uploadPhoto() {
+        const sel = input.files[0];
+
+        if (sel) {
+          let data = new FormData();
+          data.append("photo", sel);
+
+          fetch("/profilepic", {
+            method: "POST",
+            body: data,
+          })
+            .then((resp) => {
+              return resp.json();
             })
-            }
-           
-            event.preventDefault()
+            .then((json) => {
+              if (json.status == "success") {
+                alert("Photo upload successful");
+              }
+            });
         }
-    </script>
-</body>
 
+        event.preventDefault();
+      }
+    </script>
+  </body>
 </html>

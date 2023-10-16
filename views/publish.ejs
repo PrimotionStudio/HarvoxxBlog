@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WeTech Blog</title>
     <link rel="stylesheet" href="./styles.css" />
-    
+
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
   </head>
 
-  <body> 
+  <body>
     <nav class="section-p1 section-m1">
       <div class="logo">
-        <img src="./Assets/we tech.png" alt="" />
+        <a href="./">
+          <img src="./Assets/we tech.png" alt="" />
+        </a>
       </div>
       <div class="list">
         <li><a href="./home">Home</a></li>
@@ -39,18 +41,24 @@
         <form action="/post" id="publish" method="post">
           <input type="text" name="title" placeholder="Enter Title" required />
           <div class="body">
-          <textarea
-            name="body"
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Enter Body"
-            required
-          ></textarea>
+            <textarea
+              name="body"
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Enter Body"
+              required
+            ></textarea>
             <label for="file-input">
-          <input type="file" name="pic" id="file-input" accept="image/*" onchange="show(event)">
-            <img id="pic" src="./Assets/we tech.png" />
-        </label>
+              <input
+                type="file"
+                name="pic"
+                id="file-input"
+                accept="image/*"
+                onchange="show(event)"
+              />
+              <img id="pic" src="./Assets/we tech.png" />
+            </label>
           </div>
           <div class="tag-container" id="tag-container">
             <input
@@ -66,7 +74,9 @@
     </section>
     <footer class="section-p1">
       <div class="logo">
-        <img src="./Assets/we tech.png" width="100%" alt="" />
+        <a href="./">
+          <img src="./Assets/we tech.png" width="100%" alt="" />
+        </a>
       </div>
       <div class="copy">
         <p>WeTech &copy; 2023 All Copyrights Reserved</p>
@@ -75,18 +85,16 @@
 
     <script src="script.js"></script>
     <script>
-      function show(event){
-          var pic = document.querySelector("#pic")
-            
-            let reader=new FileReader()
+      function show(event) {
+        var pic = document.querySelector("#pic");
 
-            reader.onload = function(e){
-                pic.src=e.target.result;
-            }
-            reader.readAsDataURL(event.target.files[0])
-        }
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+          pic.src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
     </script>
   </body>
 </html>
-
-//test show()

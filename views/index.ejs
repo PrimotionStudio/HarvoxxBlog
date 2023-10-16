@@ -16,7 +16,9 @@
   <body>
     <nav class="section-p1 section-m1">
       <div class="logo">
-        <img src="./Assets/we tech.png" alt="" />
+        <a href="./">
+          <img src="./Assets/we tech.png" alt="" />
+        </a>
       </div>
       <div class="list">
         <% if (login) { %>
@@ -35,38 +37,6 @@
       </div>
     </nav>
 
-    <!-- Random Post -->
-    <% if (posts.length> 0) { %> <% const randomIndex=Math.floor(Math.random() *
-    posts.length); %> <% const randomPost=posts[randomIndex]; %>
-    <section class="first section-p1">
-      <a class="nolink" href="/post/<%= randomPost.id %>">
-        <div class="card">
-          <div class="profile-image">
-            <img src="./Assets/Main-Article.png" width="100%" alt="" />
-          </div>
-          <div class="writeup">
-            <h2><%= randomPost.title %></h2>
-            <p><%= randomPost.body %></p>
-            <div class="profile-img">
-              <img src="<%= randomPost.author.image %>" width="10%" alt="" />
-              <div class="profile-info">
-                <h3><%= randomPost.author.name %></h3>
-                <p><%= randomPost.author.skill %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </section>
-    <% } else { %>
-    <section class="second section-p1">
-      <div class="container">
-        <p>No posts available.</p>
-      </div>
-    </section>
-    <% } %>
-    <br />
-
     <main>
       <% if (posts.length> 0) { %> <% posts.forEach((post)=> { %>
       <!-- Individual Blog Post -->
@@ -76,9 +46,8 @@
             <img src="./Assets/Article1.png" alt="Blog Post Image" />
           </div>
           <div class="post-details">
-            <h2><%= post.title %></h2>
             <div class="centered-details">
-              <div class="profile-img">
+              <div class="profile-img" style="margin: 1rem">
                 <img
                   src="<%= post.author.image %>"
                   width="70px"
@@ -90,18 +59,8 @@
                   <p><%= post.author.skill %></p>
                 </div>
               </div>
-              <!-- <div class="author-info">
-                <img
-                  src="<%= post.author.image || './profile-pic' %>"
-                  alt="Author Image"
-                  width="100%"
-                />
-                <div class="author-details">
-                  <h3><%= post.author.name %></h3>
-                  <p><%= post.author.skill %></p>
-                </div>
-              </div> -->
             </div>
+            <h2><%= post.title %></h2>
             <p><%= post.body %></p>
           </div>
         </a>
@@ -112,7 +71,9 @@
 
     <footer class="section-p1">
       <div class="logo">
-        <img src="./Assets/we tech.png" alt="" />
+        <a href="./">
+          <img src="./Assets/we tech.png" width="100%" alt="" />
+        </a>
       </div>
       <div class="copy">
         <p>WeTech &copy; 2023 All Copyrights Reserved</p>
