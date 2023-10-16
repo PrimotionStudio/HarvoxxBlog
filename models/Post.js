@@ -28,6 +28,10 @@ const PostSchema = mongoose.Schema(
       required: false,
       default: 0
     },
+    photo: {
+      contentType: String,
+      data: Buffer
+    },
   },
   {
     timestamps: true,
@@ -51,8 +55,12 @@ PostSchema.methods.dislike=async function(){
   .then(()=>{
     console.log(`${this.title} got a like.`)
   })
-  
 }
+
+PostSchema.virtual("image").get(function(){
+  let src= `data:${this.photo.contentType}; base64, ${this.photo.data.toString('base64')}`;
+  return src;
+});
 
 module.exports = mongoose.model("Post", PostSchema);
 

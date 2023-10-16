@@ -18,8 +18,9 @@
   margin-top: 20px;
 }
 
-.logo img {
+.logo img, .copy img {
   padding:0.5%;
+  width: 80px;
   
 }
 
@@ -210,6 +211,24 @@ footer {
   font-size: 13px;
 }
 
+.body {
+  display: grid;
+  grid-template-columns: 74% 20%;
+  gap: 6%;
+}
+
+.body input{
+  display: none;
+}
+
+.body img{
+  width:100%;
+}
+
+.body label{
+  object-fit: cover;
+}
+
 @media (max-width: 500px) {
   .section-p1 {
     width: 90%;
@@ -387,3 +406,4 @@ form#publish textarea {
   margin: 5px;
   cursor: pointer;
 }
+
