@@ -11,11 +11,12 @@ exports.getPost = async (postid) => {
   const post = await Post.findById(postid).populate("author").exec();
   console.log("fetching post");
   return post;
-  
 };
 
 exports.getPostsByTag = async (req) => {
-  const posts = await Post.find({ tags: { $all: tags } }).populate("author").exec();
+  const posts = await Post.find({ tags: { $all: tags } })
+    .populate("author")
+    .exec();
   return res.status(200).json({
     status: "success",
     result: posts,
@@ -38,10 +39,10 @@ exports.createPost = async (req, res, next) => {
     body: req.body.body,
     tags: req.body.tags.split(","),
     author: session.user._id,
-    photo:{
-      data: req.file.buffer,
-      contentType: req.file.mimetype
-    }
+    // photo:{
+    //   data: req.file.buffer,
+    //   contentType: req.file.mimetype
+    // }
   });
 
   post
@@ -97,21 +98,21 @@ exports.editPost = async (req, res, next) => {
 exports.likePost = async (req, res, next) => {
   let postid = req.params.post;
   let post = await Post.findById(postid);
-  post.like()
-    msg = "liked";
+  post.like();
+  msg = "liked";
 
-  console.log(msg)
-  next()
+  console.log(msg);
+  next();
 };
 
 exports.dislikePost = async (req, res, next) => {
   let postid = req.params.post;
   let post = await Post.findById(postid);
-  post.dislike()
-    msg = "disliked";
+  post.dislike();
+  msg = "disliked";
 
-  console.log(msg)
-  next()
+  console.log(msg);
+  next();
 };
 
 /*
