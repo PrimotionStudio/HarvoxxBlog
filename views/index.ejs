@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harv Blog</title>
+    <title>WeTech Blog</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./bg.css" />
     <link rel="icon" href="./Assets/we tech.png" />
     <link
       rel="stylesheet"
@@ -12,18 +13,13 @@
     />
   </head>
 
-  <script>
-    <% if (alert != "") { %>
-      alert("<%= alert %>");
-    <% } %>
-  </script>
   <body>
     <nav class="section-p1 section-m1">
       <div class="logo">
-        <img src="./Assets/we tech.png"   alt="" />
+        <img src="./Assets/we tech.png" alt="" />
       </div>
       <div class="list">
-        <% if (login) {%>
+        <% if (login) { %>
         <li><a href="./home">Home</a></li>
         <li><a href="./profile">Profile</a></li>
         <li><a href="./publish" class="active">Publish</a></li>
@@ -40,9 +36,8 @@
     </nav>
 
     <!-- Random Post -->
-    <% if (posts.length > 0) { %> <% const randomIndex=Math.floor(Math.random()
-    * posts.length); %> <% const randomPost=posts[randomIndex]; %>
-
+    <% if (posts.length> 0) { %> <% const randomIndex=Math.floor(Math.random() *
+    posts.length); %> <% const randomPost=posts[randomIndex]; %>
     <section class="first section-p1">
       <a class="nolink" href="/post/<%= randomPost.id%>">            
       <div class="card">
@@ -62,8 +57,7 @@
           </div>
         </div>
       </a>
-      </section>
-
+    </section>
     <% } else { %>
     <section class="second section-p1">
       <div class="container">
@@ -82,29 +76,42 @@
           <div class="blog-post">
             <img src="<%= post.image||'./Assets/Article1.png'%>" width="100%" alt="" />
             <h2><%= post.title %></h2>
+            <div class="centered-details">
+              <div class="profile-img">
+                <img
+                  src="<%= randomPost.author.image %>"
+                  width="70px"
+                  height="70px"
+                  alt=""
+                />
+                <div class="profile-info">
+                  <h3><%= randomPost.author.name %></h3>
+                  <p><%= randomPost.author.skill %></p>
+                </div>
+              </div>
+              <!-- <div class="author-info">
+                <img
+                  src="<%= post.author.image || './profile-pic' %>"
+                  alt="Author Image"
+                  width="100%"
+                />
+                <div class="author-details">
+                  <h3><%= post.author.name %></h3>
+                  <p><%= post.author.skill %></p>
+                </div>
+              </div> -->
+            </div>
             <p><%= post.body %></p>
           </div>
-          <div class="profile-img">
-            <img src="<%= post.author.image || './profile-pic' %>" width="15%" alt="" />
-            <div class="profile-info">
-              <h3><%= post.author.name %></h3>
-              <p><%= post.author.skill %></p>
-            </div>
-          </div>
-          </a>
-        </div>
-        <% if (i % 3 == 0) {first = i + 1;%>
+        </a>
       </div>
-    </section>
-    <% } %> <% i++; %> <% }); %> <% } %>
-    <% if ((i - 1) % 3 != 0) { %>
-      </div>
-    </section>
-    <% }%>
+      <% }); %> <% } %>
+      <!-- End of Individual Blog Post -->
+    </main>
 
     <footer class="section-p1">
       <div class="logo">
-        <img src="./Assets/we tech.png"   alt="" />
+        <img src="./Assets/we tech.png" alt="" />
       </div>
       <div class="copy">
         <p>WeTech &copy; 2023 All Copyrights Reserved</p>
