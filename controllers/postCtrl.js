@@ -38,6 +38,10 @@ exports.createPost = async (req, res, next) => {
     body: req.body.body,
     tags: req.body.tags.split(","),
     author: session.user._id,
+    photo:{
+      data: req.file.buffer,
+      contentType: req.file.mimetype
+    }
   });
 
   post

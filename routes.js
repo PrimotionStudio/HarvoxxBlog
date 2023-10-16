@@ -113,7 +113,7 @@ Router.post(
   }
 );
 // Post
-Router.route("/publish").get(authCtrl.isLoggedIn, (req, res, next) => {
+Router.route("/publish").get(authCtrl.isLoggedIn,  (req, res, next) => {
   let alert;
   if (session.alert) {
     alert = session.alert;
@@ -123,7 +123,9 @@ Router.route("/publish").get(authCtrl.isLoggedIn, (req, res, next) => {
 });
 
 Router.route("/post")
-  .post(authCtrl.isLoggedIn, postCtrl.createPost)
+  .post(authCtrl.isLoggedIn, multerupload.single("pic"), postCtrl.createPost,
+  
+  )
   .get(authCtrl.isLoggedIn, postCtrl.getPosts, (req, res) =>{
     res.redirect("/home");
   });
