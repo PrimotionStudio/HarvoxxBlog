@@ -38,7 +38,8 @@
     </nav>
 
     <main>
-      <% if (posts.length> 0) { %> <% posts.forEach((post)=> { %>
+      <% if (posts.length> 0) {posts.reverse(); %> <% posts.forEach((post)=> {
+      %>
       <!-- Individual Blog Post -->
       <div class="bg">
         <a class="post-link" href="/post/<%= post.id %>">
