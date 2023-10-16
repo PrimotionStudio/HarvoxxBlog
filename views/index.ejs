@@ -39,10 +39,10 @@
     <% if (posts.length> 0) { %> <% const randomIndex=Math.floor(Math.random() *
     posts.length); %> <% const randomPost=posts[randomIndex]; %>
     <section class="first section-p1">
-      <a class="nolink" href="/post/<%= randomPost.id %>">
-        <div class="card">
-          <div class="profile-image">
-            <img src="./Assets/Main-Article.png" width="100%" alt="" />
+      <a class="nolink" href="/post/<%= randomPost.id%>">            
+      <div class="card">
+        <div class="profile-image">
+            <img src="<%= randomPost.image||'./Assets/Main-Article.png' %>" width="100%" alt="" />
           </div>
           <div class="writeup">
             <h2><%= randomPost.title %></h2>
@@ -66,16 +66,15 @@
     </section>
     <% } %>
     <br />
-
-    <main>
-      <% if (posts.length> 0) { %> <% posts.forEach((post)=> { %>
-      <!-- Individual Blog Post -->
-      <div class="bg">
-        <a class="post-link" href="/post/<%= post.id %>">
-          <div class="post-image">
-            <img src="./Assets/Article1.png" alt="Blog Post Image" />
-          </div>
-          <div class="post-details">
+    <% let i = 1; let first = i; %> <% if (posts.length > 0) { %> <%
+    posts.forEach((post) => { %> <% if (first == i) {%>
+    <section class="second section-p1">
+      <div class="container">
+        <%}%>
+        <div class="blog">
+          <a class="nolink" href="/post/<%= post.id%>">        
+          <div class="blog-post">
+            <img src="<%= post.image||'./Assets/Article1.png'%>" width="100%" alt="" />
             <h2><%= post.title %></h2>
             <div class="centered-details">
               <div class="profile-img">
