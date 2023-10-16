@@ -13,23 +13,7 @@
   </head>
 
   <body>
-    <nav class="section-p1 section-m1">
-      <div class="logo">
-        <a href="./">
-          <img src="./Assets/we tech.png" alt="" />
-        </a>
-      </div>
-      <div class="list">
-        <li><a href="./home">Home</a></li>
-        <li><a href="./profile">Profile</a></li>
-        <li><a href="./publish" class="active">Publish</a></li>
-        <li><a href="./signout">Logout</a></li>
-        <li id="times"><i class="far fa-times times"></i></li>
-      </div>
-      <div class="hamburger">
-        <i class="fas fa-outdent"></i>
-      </div>
-    </nav>
+    <%- include("header.ejs")%>
 
     <script>
       <% if (alert != "") { %>
@@ -38,7 +22,7 @@
     </script>
     <section class="second section-p1">
       <div class="container">
-        <form action="/post" id="publish" method="post">
+        <form action="/post" id="publish" enctype="multipart/form-data" method="post">
           <input type="text" name="title" placeholder="Enter Title" required />
           <div class="body">
             <textarea

@@ -13,28 +13,7 @@
 <body>
     
       <body>
-        <nav class="section-p1 section-m1">
-          <div class="logo">
-            <a href="./">
-              <img src="./Assets/we tech.png" alt="" />
-            </a>
-          </div>
-          <div class="list">
-            <% if (login) {%>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/publish" class="active">Publish</a></li>
-            <li><a href="/signout">Logout</a></li>
-            <% } else { %>
-            <li><a href="/">Home</a></li>
-            <li><a href="/signin" class="active">Accounts</a></li>
-            <% } %>
-            <li id="times"><i class="far fa-times times"></i></li>
-          </div>
-          <div class="hamburger">
-            <i class="fas fa-outdent"></i>
-          </div>
-        </nav>
+        <%- include("header.ejs")%>
     <section class="cont">
         <div class="cont1">
              <div class="rem">
@@ -67,11 +46,21 @@
             </div>
             <div class="content">
                 
+                <div>
+                    <img  src="<%= post.image || 'assets/asset10.jpg' %>" alt="<%= post.title %>">
+                </div>
                 <div class="cardr">
+
                    
                     <%= post.body %>
                 </div>
-                
+                <% if(post.tags.length>0) {%>
+                <ul class="tagbody">
+                    <% post.tags.forEach((tag)=>{ %>
+                        <li class="tag"><%= tag %></li>
+                    <%}) %>
+                </ul>
+                <% } %>
             </div>
         </div>
     </div>

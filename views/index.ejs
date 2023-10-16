@@ -14,28 +14,7 @@
   </head>
 
   <body>
-    <nav class="section-p1 section-m1">
-      <div class="logo">
-        <a href="./">
-          <img src="./Assets/we tech.png" alt="" />
-        </a>
-      </div>
-      <div class="list">
-        <% if (login) { %>
-        <li><a href="./home">Home</a></li>
-        <li><a href="./profile">Profile</a></li>
-        <li><a href="./publish" class="active">Publish</a></li>
-        <li><a href="./signout">Logout</a></li>
-        <% } else { %>
-        <li><a href="./">Home</a></li>
-        <li><a href="./signin" class="active">Accounts</a></li>
-        <% } %>
-        <li id="times"><i class="far fa-times times"></i></li>
-      </div>
-      <div class="hamburger">
-        <i class="fas fa-outdent"></i>
-      </div>
-    </nav>
+    <%- include("header.ejs") %>
 
     <main>
       <% if (posts.length> 0) {posts.reverse(); %> <% posts.forEach((post)=> {
@@ -44,7 +23,7 @@
       <div class="bg">
         <a class="post-link" href="/post/<%= post.id %>">
           <div class="post-image">
-            <img src="./Assets/Article1.png" alt="Blog Post Image" />
+            <img src="<%= post.image || './Assets/Article1.png'%>" alt="Blog Post Image" />
           </div>
           <div class="post-details">
             <div class="centered-details">

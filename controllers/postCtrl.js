@@ -34,15 +34,17 @@ exports.get = async (req, res, next) => {
 };
 
 exports.createPost = async (req, res, next) => {
+  console.log(req.body)
+  let {buffer, mimetype} = req.file;
   let post = new Post({
     title: req.body.title,
     body: req.body.body,
     tags: req.body.tags.split(","),
     author: session.user._id,
-    // photo:{
-    //   data: req.file.buffer,
-    //   contentType: req.file.mimetype
-    // }
+    photo:{
+      data: buffer || null,
+      contentType: mimetype || null,
+    },
   });
 
   post

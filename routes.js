@@ -51,6 +51,21 @@ Router.route("/home").get(authCtrl.isLoggedIn, async (req, res, next) => {
     login: true,
   });
 });
+
+Router.route("/dashboard").get(authCtrl.isLoggedIn,  async (req,res)=>{
+   let alert;
+  if (session.alert) {
+    alert = session.alert;
+    session.alert = undefined;
+  }
+  res.status(200).render("dashboard", {
+    alert: alert || "",
+    user: session.user,
+    posts: await postCtrl.getPosts(),
+    login: true,
+  });
+})
+
 Router.route("/profile").get(authCtrl.isLoggedIn, async (req, res, next) => {
   let alert;
   if (session.alert) {
@@ -123,7 +138,7 @@ Router.route("/publish").get(authCtrl.isLoggedIn,  (req, res, next) => {
 });
 
 Router.route("/post")
-  .post(authCtrl.isLoggedIn, multerupload.single("pic"), postCtrl.createPost,
+  .post(multerupload.single("pic"), authCtrl.isLoggedIn,  postCtrl.createPost
   
   )
   .get(authCtrl.isLoggedIn, postCtrl.getPosts, (req, res) =>{

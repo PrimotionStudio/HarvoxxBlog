@@ -58,7 +58,7 @@ PostSchema.methods.dislike=async function(){
 }
 
 PostSchema.virtual("image").get(function(){
-  if(this.photo.data!=undefined){
+  if((this.photo.data!=undefined) || (this.photo.data!=null)){
     let src= `data:${this.photo.contentType}; base64, ${this.photo.data.toString('base64')}`;
     return src;
   }

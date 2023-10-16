@@ -15,29 +15,7 @@
 
   <body>
     <header>
-      <nav class="section-p1 section-m1">
-        <div class="logo">
-          <a href="./">
-            <img src="./Assets/we tech.png" alt="" />
-          </a>
-        </div>
-        <h1>Welcome to Your Profile</h1>
-        <div class="list">
-          <% if (login) {%>
-          <li><a href="/home">Home</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/publish" class="active">Publish</a></li>
-          <li><a href="/signout">Logout</a></li>
-          <% } else { %>
-          <li><a href="/">Home</a></li>
-          <li><a href="/signin" class="active">Accounts</a></li>
-          <% } %>
-          <li id="times"><i class="far fa-times times"></i></li>
-        </div>
-        <div class="hamburger">
-          <i class="fas fa-outdent"></i>
-        </div>
-      </nav>
+      <%- include("header.ejs")%>
     </header>
     <div class="profile-container">
       <input
